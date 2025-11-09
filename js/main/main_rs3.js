@@ -1,4 +1,5 @@
 'use strict';
+import current_mapversion from "../../current_mapversion.js";
 
 var runescape_map = L.gameMap('map', {
         crs: L.CRS.Simple,
@@ -20,19 +21,19 @@ var runescape_map = L.gameMap('map', {
 		maxPlane: 3,
         doubleClickZoom: false,
 		iconMode: "",
-		baseMaps: 'data/rs3/basemaps.json',
+        baseMaps: `https://maps.runescape.wiki/rs/versions/${current_mapversion}/basemaps.json`,
 		loadMapData: true,
 		loadMarkers: false,
     });
 
-var main = L.tileLayer.main('layers_rs3/map_squares/{mapId}/{zoom}/{plane}_{x}_{y}.png', {
+var main = L.tileLayer.main(`https://maps.runescape.wiki/rs/versions/${current_mapversion}/map_squares/{mapId}/{zoom}/{plane}_{x}_{y}.png`, {
         minZoom: -4,
         maxNativeZoom: 3,
         maxZoom: 4,
 		iconMode: "",
     }).addTo(runescape_map);
 
-var icons = L.tileLayer.main('layers_rs3/icon_squares/{mapId}/{zoom}/{plane}_{x}_{y}.png', {
+var icons = L.tileLayer.main(`https://maps.runescape.wiki/rs/versions/${current_mapversion}/map_icon_squares/{mapId}/{zoom}/{plane}_{x}_{y}.png`, {
         minZoom: -4,
         maxNativeZoom: 3,
         maxZoom: 4,

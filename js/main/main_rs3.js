@@ -1,5 +1,5 @@
 'use strict';
-import current_mapversion from "../../current_mapversion.js";
+import {current_mapversion} from "../../current_mapversion.js";
 
 var runescape_map = L.gameMap('map', {
         crs: L.CRS.Simple,

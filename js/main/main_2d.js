@@ -12,7 +12,7 @@ import "../../js/plugins/leaflet.urllayers.js";
 import "../../js/plugins/leaflet.rect.js";
 import "../../js/plugins/leaflet.clickcopy.js";
 import "../../js/plugins/leaflet.maplabels.js";
-import {current_mapversion} from "../../current_mapversion.js";
+import {current_mapversion_2d} from "../../current_mapversion.js";
 
 import plot_map_labels from "../../js/plugins/leaflet.labels.js";
 window.plot_map_labels = plot_map_labels;
@@ -40,7 +40,7 @@ void (function (global) {
         minZoom: -4,
         maxZoom: 4,
         doubleClickZoom: false,
-        baseMaps: `https://maps.runescape.wiki/rs/versions/${current_mapversion}/basemaps.json`,
+        baseMaps: `https://maps.runescape.wiki/rs/versions/${current_mapversion_2d}/basemaps.json`,
         loadMapData: true,
         showMapBorder: true,
         enableUrlLocation: true,
@@ -62,7 +62,7 @@ void (function (global) {
     L.control.display.pathfinder().addTo(runescape_map);
 
     L.tileLayer
-        .main(`https://maps.runescape.wiki/rs/versions/${current_mapversion}/map_squares/{mapId}/{zoom}/{plane}_{x}_{y}.png`, {
+        .main(`https://maps.runescape.wiki/rs/versions/${current_mapversion_2d}/map_squares/{mapId}/{zoom}/{plane}_{x}_{y}.png`, {
             minZoom: -4,
             maxNativeZoom: 3,
             maxZoom: 5,
@@ -70,7 +70,7 @@ void (function (global) {
         .addTo(runescape_map)
         .bringToBack();
 
-    var icon_squares = L.tileLayer.main(`https://maps.runescape.wiki/rs/versions/${current_mapversion}/map_icon_squares/{mapId}/{zoom}/{plane}_{x}_{y}.png`, {
+    var icon_squares = L.tileLayer.main(`https://maps.runescape.wiki/rs/versions/${current_mapversion_2d}/map_icon_squares/{mapId}/{zoom}/{plane}_{x}_{y}.png`, {
         minZoom: -4,
         maxNativeZoom: 3,
         maxZoom: 5,

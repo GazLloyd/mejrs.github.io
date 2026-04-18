@@ -171,8 +171,8 @@ void (function (global) {
             let str = `Points:<ul style="margin:0;">`;
             let str2 = [];
             for (const ll of ltlg) {
-            str += `<li>${ll.lat}, ${ll.lng}</li>`;
-            str2.push(`${ll.lat},${ll.lng}`);
+                str += `<li>${ll.lng}, ${ll.lat}</li>`;
+                str2.push(`${ll.lng},${ll.lat}`);
             }
             str += '</ul>For templates:<br><span style="font-family:monospace;">'+str2.join(';')+'</span>';
             return str;

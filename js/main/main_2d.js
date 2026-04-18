@@ -12,6 +12,7 @@ import "../../js/plugins/leaflet.urllayers.js";
 import "../../js/plugins/leaflet.rect.js";
 import "../../js/plugins/leaflet.clickcopy.js";
 import "../../js/plugins/leaflet.maplabels.js";
+import "../../js/plugins/leaflet-geoman.js";
 import {current_mapversion_2d} from "../../current_mapversion.js";
 
 import plot_map_labels from "../../js/plugins/leaflet.labels.js";
@@ -147,4 +148,34 @@ void (function (global) {
             }
         )
         .addTo(runescape_map);
+            runescape_map.pm.addControls({  
+        position: 'topleft',  
+        drawCircleMarker: false,
+        drawCircle: false,
+        drawText: false,
+        cutPolygon: false,
+        rotateMode: false,
+    });
+    runescape_map.on('pm:create', e=>{
+        console.log('pm:create', e);
+        e.layer.bindPopup(layer=>{
+            console.log('layer', layer);
+            let ltlg;
+            try {
+                ltlg = layer.getLatLngs();
+            } catch (e) {
+                ltlg = [layer.getLatLng()];
+            }
+            if (ltlg.length === 1 && Array.isArray(ltlg[0])) ltlg = ltlg[0];
+            console.log('getLatLngs', ltlg);
+            let str = `Points:<ul style="margin:0;">`;
+            let str2 = [];
+            for (const ll of ltlg) {
+            str += `<li>${ll.lat}, ${ll.lng}</li>`;
+            str2.push(`${ll.lat},${ll.lng}`);
+            }
+            str += '</ul>For templates:<br><span style="font-family:monospace;">'+str2.join(';')+'</span>';
+            return str;
+        });
+    });
 })(this || window);
